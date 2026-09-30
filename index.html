@@ -4,8 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor game</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: aliceblue;
+            font-size: 48px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        div .container{
+            display: flex;
+            gap: 75px;
+        }
+        button{
+            padding: 6px;
+            background-color: rgb(61, 105, 186);
+            color: black;
+            font-size: 38px;
+            border: 2px solid black;
+            border-radius: 10%;
+        }
+        .result{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            height: 250px;
+            margin-top: 48px;
+            border: 2px solid black;
+            border-radius: 20%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+    <h1>Rock, Paper, Scissor game</h1>
+    <div class="container">
+        <span>Choose:</span>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissor">Scissor</button>
+    </div>
+    <div class="result"></div>
     <script src="script.js"></script>
 </body>
 </html>

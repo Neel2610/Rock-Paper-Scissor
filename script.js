@@ -26,8 +26,9 @@ function getComputerChoice() {
 }
 
 // User will make choice
-function getHumanChoice() {
-    choice = prompt("Rock, Paper os Scissor?");
+function getHumanChoice(value) {
+    
+    let choice = value;
     return choice;
 }
 
@@ -84,38 +85,99 @@ function playRound(humanChoice,computerChoice) {
 
 }
 
-// Function to play game 5 timer
-function playGame(){
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
+const result = document.querySelector(".result");
 
-    for (let i = 0; i < 5; i++) {
-       round = playRound(getHumanChoice(),getComputerChoice());
+const comScore = document.createElement("div");
+comScore.innerText = `Computer's score: ${computerScore}`;
+const plyrScore = document.createElement("div");
+plyrScore.innerText = `Your score: ${humanScore}`;
+
+result.appendChild(comScore);
+result.appendChild(plyrScore);
+
+rock.addEventListener("click",() => {
+    playRound(getHumanChoice("rock"),getComputerChoice());
+
+    plyrScore.innerText = `Your score: ${humanScore}`;
+    comScore.innerText = `Computer's score: ${computerScore}`;
+
+    if (humanScore == 5){
+        const winner = document.createElement("div");
+        winner.innerText = "You won the game!";
+
+        result.setAttribute("style","background-color: #90EE90;");
+        result.appendChild(winner);
+
+        humanScore = 0;
+        computerScore = 0;
     }
+    else if (computerScore == 5){
+        const winner = document.createElement("div");
+        winner.innerText = "computer won the game!";
 
-}
-
-// Declare winner
-function getWinner(){
-    console.log(`Your score: ${humanScore}`);
-    console.log(`Computer's score: ${computerScore}`);
-
-    if (humanScore > computerScore) {
-        console.log("You won!");
-        alert("You won!");
+        result.setAttribute("style","background-color: #FF7F7F;");
+        result.appendChild(winner);
+        
+        humanScore = 0;
+        computerScore = 0;
     }
-    else if (humanScore < computerScore) {
-        console.log("You loose!");
-        alert("You loose!");
+});
+
+paper.addEventListener("click",() => {
+    playRound(getHumanChoice("paper"),getComputerChoice());
+
+    plyrScore.innerText = `Your score: ${humanScore}`;
+    comScore.innerText = `Computer's score: ${computerScore}`;
+
+    if (humanScore == 5){
+        const winner = document.createElement("div");
+        winner.innerText = "You won the game!";
+
+        result.setAttribute("style","background-color: #90EE90;");
+        result.appendChild(winner);
+
+        humanScore = 0;
+        computerScore = 0;
     }
-    else{
-        console.log("It's tie!");
-        alert("It's tie!");
+    else if (computerScore == 5){
+        const winner = document.createElement("div");
+        winner.innerText = "computer won the game!";
+
+        result.setAttribute("style","background-color: #FF7F7F;");
+        result.appendChild(winner);
+        
+        humanScore = 0;
+        computerScore = 0;
     }
+});
 
-return;
+scissor.addEventListener("click",() => {
+    playRound(getHumanChoice("scissor"),getComputerChoice());
 
-}
+    plyrScore.innerText = `Your score: ${humanScore}`;
+    comScore.innerText = `Computer's score: ${computerScore}`;
 
-// Call th playGame function to start the game
-playGame();
-getWinner();
+    if (humanScore == 5){
+        const winner = document.createElement("div");
+        winner.innerText = "You won the game!";
 
+        result.setAttribute("style","background-color: #90EE90;");
+        result.appendChild(winner);
+
+        humanScore = 0;
+        computerScore = 0;
+    }
+    else if (computerScore == 5){
+        const winner = document.createElement("div");
+        winner.innerText = "computer won the game!";
+
+        result.setAttribute("style","background-color: #FF7F7F;");
+        result.appendChild(winner);
+        
+        humanScore = 0;
+        computerScore = 0;
+    }
+});
